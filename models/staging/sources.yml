@@ -8,4 +8,7 @@ sources:
       - name: orders
       - name: customers
       - name: order_details
+      - name: categories
+      - name: products
+      - name: suppliers
       
