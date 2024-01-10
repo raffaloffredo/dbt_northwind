@@ -1,12 +1,13 @@
-with customers as (
-    select * from {{ ref('dim_customers')}}
-)
-, orders as (
-    select * from {{ ref('stg_orders')}}
-)
+with 
+    customers as (
+        select * from {{ ref('dim_customers')}}
+    )
+    , orders as (
+        select * from {{ ref('dim_orders')}}
+    )
 
 select 
-    customers.sk_customer
+    customers.sk_customers
     , orders.*
 from orders
 left join customers

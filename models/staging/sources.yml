@@ -11,11 +11,18 @@ sources:
         columns:
           - name: order_id
             description: Unique identification per order made
+            tests:
+              - unique
+              - not_null
       - name: customers
         description: List of customers from ERP Northwind
         columns:
           - name: customer_id
             description: Unique identification per customer made
+            tests:
+              - relationships:
+                  field: customer_id
+                  to: ref('stg_customers')
       - name: order_details
       - name: categories
       - name: products
