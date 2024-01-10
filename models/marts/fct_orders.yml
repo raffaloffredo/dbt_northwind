@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: The fact table for orders
+    columns:
+      - name: order_id
+        description: Unique identification per order made
+        tests:
+          - unique
+          - not_null
