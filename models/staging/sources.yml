@@ -12,6 +12,10 @@ sources:
           - name: order_id
             description: Unique identification per order made
       - name: customers
+        description: List of customers from ERP Northwind
+        columns:
+          - name: customer_id
+            description: Unique identification per customer made
       - name: order_details
       - name: categories
       - name: products
