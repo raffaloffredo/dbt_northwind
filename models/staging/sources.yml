@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: northwind
+    description: Data from Northwind ERP
+    database: curso-etl-101
+    schema: erp_northwind
+    tables:
+      - name: orders
+        description: List of orders from ERP Northwind
+        freshness: 
+          warn_after:
+            count: 5000
+            period: day
+          error_after:
+            count: 10000
+            period: day
+        loaded_at_field: cast(order_date as timestamp)
+        columns:
+          - name: order_id
+            description: Unique identification per order made
+            tests:
+              - unique
+              - not_null
+      - name: customers
+        description: List of customers from ERP Northwind
+        columns:
+          - name: customer_id
+            description: Unique identification per customer made
+            tests:
+              - relationships:
+                  to: source('northwind', 'customers')
+                  field: customer_id
+      - name: order_details
+      - name: categories
+      - name: products
+      - name: suppliers
+      
